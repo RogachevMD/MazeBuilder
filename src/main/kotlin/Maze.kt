@@ -1,6 +1,6 @@
-class Maze(sizeX: Int = 5, sizeY: Int = 5) {
+public class Maze(sizeX: Int = 5, sizeY: Int = 5) {
 
-    var maze: Array<IntArray> = Array(1) { IntArray(1) };
+    private var maze: Array<Array<Cell>> = arrayOf()
 
     init {
         init(sizeX, sizeY)
@@ -8,7 +8,7 @@ class Maze(sizeX: Int = 5, sizeY: Int = 5) {
     }
 
     fun init(x: Int, y: Int) {
-        maze = Array(y) { IntArray(x) }
+        maze = Array(y) { Array(x) }
         println(maze.size)
     }
 
@@ -19,9 +19,9 @@ class Maze(sizeX: Int = 5, sizeY: Int = 5) {
                 if ((rangeY % 2 != 0 && rangeY % 2 != 0) &&
                     (rangeX < x - 1 && rangeY < y - 1)
                 ) {
-                    //maze[rangeX, rangeY] = 8
+                    maze[rangeX][rangeY] = Cell(CellType.Wall)
                 }else{
-                    //maze[rangeX, rangeY] = 0
+                    maze[rangeX][rangeY] = Cell(CellType.Empty)
                 }
             }
             println()
